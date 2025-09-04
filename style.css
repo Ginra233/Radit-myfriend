@@ -1,0 +1,179 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #222;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.game-container {
+    width: 90vw;
+    height: 90vh;
+    max-width: 1200px;
+    max-height: 800px;
+    position: relative;
+    background-color: #444;
+    border: 5px solid #333;
+    box-shadow: 0 0 40px rgba(0,0,0,0.7);
+    overflow: hidden;
+    cursor: grab;
+}
+
+.game-container:active {
+    cursor: grabbing;
+}
+
+.room {
+    width: 200%;
+    height: 200%;
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    transform: translate(-25%, -25%);
+    background-image: url('https://via.placeholder.com/1200x800/664422/FFFFFF?text=Wood+Wall+Texture');
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.1s ease-out; /* Animasi pergerakan */
+}
+
+/* Efek Jendela dan Hujan */
+.window {
+    position: absolute;
+    top: 25%;
+    left: 20%;
+    width: 60%;
+    height: 60%;
+    background-color: #333;
+    border: 10px solid #555;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
+    overflow: hidden;
+}
+
+.mountain-view {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://via.placeholder.com/1800x1200/556B2F/FFFFFF?text=Mountain+View');
+    background-size: cover;
+    background-position: center bottom;
+}
+
+.rain-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAAECAYAAACwz0IAAAAQklEQVQIHQEK/j/AgbD9fAAL9gAAgCgAAL/3+T9gAAAAASUVORK5CYII=');
+    animation: rainEffect 0.5s linear infinite;
+    opacity: 0.6;
+}
+
+@keyframes rainEffect {
+    0% { background-position: 0 0; }
+    100% { background-position: 100% 100%; }
+}
+
+/* Objek-objek interaktif */
+.bed, .desk, .chair, .laptop {
+    position: absolute;
+    /* Efek 3D ringan dengan transformasi */
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+}
+
+.bed {
+    bottom: 10%;
+    right: 15%;
+    width: 30%;
+    height: 25%;
+    background-color: #8B4513;
+    border-radius: 10px 10px 0 0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+
+.desk {
+    bottom: 5%;
+    left: 15%;
+    width: 40%;
+    height: 20%;
+    background-color: #CD853F;
+    border-radius: 5px 5px 0 0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+
+.laptop {
+    position: absolute;
+    top: -15%;
+    left: 10%;
+    width: 25%;
+    height: 15%;
+    background-color: #333;
+    border-radius: 5px;
+    transform: rotateX(20deg);
+}
+
+.note {
+    position: absolute;
+    top: -8%;
+    left: 60%;
+    width: 15%;
+    height: 10%;
+    background-color: #FFFACD;
+    border: 1px solid #CCC;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+    cursor: pointer;
+    transform: rotate(5deg);
+}
+
+/* UI untuk menampilkan surat */
+.note-display {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.9);
+    display: none; /* Sembunyikan secara default */
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.note-content {
+    background-color: #FFFACD;
+    color: #333;
+    padding: 40px;
+    border-radius: 10px;
+    max-width: 500px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(255,255,255,0.2);
+}
+
+.note-content p {
+    font-size: 2em;
+    font-style: italic;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.close-btn {
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: #555;
+}
+
+/* Kontrol UI */
+.controls {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 14px;
+    background-color: rgba(0,0,0,0.6);
+    padding: 8px 15px;
+    border-radius: 5px;
+    white-space: nowrap;
+}
